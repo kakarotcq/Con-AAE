@@ -36,7 +36,7 @@ class FC_VAE(nn.Module):
                                      nn.Linear(n_hidden, n_hidden),
                                      nn.BatchNorm1d(n_hidden),
                                      nn.LeakyReLU(inplace=True),
-                                     nn.Linear(n_hidden, n_hidden),
+                                     nn.Linear(n_hidden, n_input),
                                     )
     def forward(self, x):
         mu, logvar = self.encode(x)
@@ -50,6 +50,7 @@ class FC_VAE(nn.Module):
     #why reparametrize
     def reparametrize(self, mu, logvar):
         std = logvar.mul(0.5).exp_()
+        #print(std.size())
         if torch.cuda.is_available():
             eps = torch.cuda.FloatTensor(std.size()).normal_()
         else:
@@ -166,8 +167,11 @@ class TripletLoss(nn.Module):
       dist=dist.clamp(min=1e-12).sqrt()
       
       mask=labels.expand(n,n).eq(labels.expand(n,n).t())
+      #print(mask.shape)
+      #print(mask[0])
       dist_ap,dist_an=[],[]
       for i in range(n):
+        #print(i)
         dist_ap.append(dist[i][mask[i]].max().unsqueeze(0))
         dist_an.append(dist[i][mask[i]==0].min().unsqueeze(0))
       dist_ap=torch.cat(dist_ap)
