@@ -1,7 +1,0 @@
-noisymnist_*
-__pycache__/
-.ipynb_*
-*.log
-*.model
-*.gz
-.vscode/
