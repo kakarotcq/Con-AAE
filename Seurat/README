@@ -1,0 +1,5 @@
+R version == 4.0.5
+Seurat version== 3.2.3
+Because Seurat assume that the two datasets have same features so we use 
+PCA in python process (make ATAC and RNA data have same number of features) 
+our datasets for convinence before enter this pipeline.
