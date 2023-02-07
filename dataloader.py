@@ -16,6 +16,7 @@ class ATAC_Dataset(Dataset):
         self.datadir = datadir
         self.mode=mode
         self.atac_data,self.labels = self._load_atac_data()
+        print('test_git')
 
     def __len__(self):
         return len(self.atac_data)
