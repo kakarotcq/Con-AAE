@@ -10,9 +10,9 @@ conda env create -f conAAE_env.yaml
 
 ## Usage
 Required Files:
-1.gene count matrix file (rna.csv): rows are cells and columns are genes.
-2.scATAC matrix file (atac.csv): rows care cells are peaks.
-3.annotations for cells (label.csv): used to annotate the cell type for each cell.
+1. gene count matrix file (rna.csv): rows are cells and columns are genes.
+2. scATAC matrix file (atac.csv): rows care cells are peaks.
+3. annotations for cells (label.csv): used to annotate the cell type for each cell.
 
 ## Example
 An example is placed as **Demo.ipynb**. Please run the example to get familiar with Con-AAE.
