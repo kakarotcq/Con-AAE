@@ -13,8 +13,9 @@ class FC_VAE(nn.Module):
         self.n_hidden = n_hidden
 
         self.encoder = nn.Sequential(nn.Linear(n_input, n_hidden),
-                                nn.LeakyReLU(inplace=True),
+                                
                                 nn.BatchNorm1d(n_hidden),
+                                nn.LeakyReLU(inplace=True),
                                 nn.Linear(n_hidden, n_hidden),
                                 nn.BatchNorm1d(n_hidden),
                                 nn.LeakyReLU(inplace=True),
@@ -28,8 +29,9 @@ class FC_VAE(nn.Module):
         self.fc2 = nn.Linear(100, nz)
 
         self.decoder = nn.Sequential(nn.Linear(nz, 100),
-                                     nn.LeakyReLU(inplace=True),
+                                     
                                      nn.BatchNorm1d(100),
+                                     nn.LeakyReLU(inplace=True),
                                      nn.Linear(100, n_hidden),
                                      nn.BatchNorm1d(n_hidden),
                                      nn.LeakyReLU(inplace=True),
@@ -79,6 +81,7 @@ class FC_Autoencoder(nn.Module):
         self.n_hidden = n_hidden
 
         self.encoder = nn.Sequential(nn.Linear(n_input, n_hidden),
+                                
                                 nn.LeakyReLU(inplace=True),
                                 nn.BatchNorm1d(n_hidden),
                                 nn.Linear(n_hidden, n_hidden),
@@ -94,6 +97,7 @@ class FC_Autoencoder(nn.Module):
                                 )
 
         self.decoder = nn.Sequential(nn.Linear(nz, 100),
+                                     
                                      nn.LeakyReLU(inplace=True),
                                      nn.BatchNorm1d(100),
                                      nn.Linear(100, n_hidden),

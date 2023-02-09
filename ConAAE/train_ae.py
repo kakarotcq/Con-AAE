@@ -269,7 +269,7 @@ def train_autoencoders(rna_inputs, atac_inputs, rna_class_labels=None, atac_clas
     #print(clf_loss.shape)
     #print(clf_loss)
     #loss = args.alpha*(rna_recon_loss + atac_recon_loss)
-    loss = (rna_recon_loss + atac_recon_loss)
+    loss = args.alpha*(rna_recon_loss + atac_recon_loss)
     #loss = args.alpha*(rna_recon_loss + atac_recon_loss) + kl_loss
     if args.discriminator:
         clf_loss = 0.5*criterion_dis(rna_scores, atac_labels) + 0.5*criterion_dis(atac_scores, rna_labels)
